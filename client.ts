@@ -4,7 +4,7 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 const transport = new StdioClientTransport({
     command: "python3",
     args: ["./server.py"],
-    env: {}
+    env: { "PATH": Deno.env.get("PATH") ?? "" }
 })
 
 const client = new Client({ name: "example-client", version: "0.1.0" });
